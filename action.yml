@@ -1,0 +1,28 @@
+name: pkl-lang
+
+author: Draftea
+
+description: Setup pkl-lang CLI to interact with it
+
+inputs:
+  version:
+    description: Desired pkl version.
+    default: "0.25.3"
+  args:
+    description: pkl command arguments to execute.
+    default: "--version"
+
+runs:
+  using: composite
+  steps:
+    - name: Setup PKL CLI
+      shell: bash
+      run: |
+        curl -L -o pkl https://github.com/apple/pkl/releases/download/${{ inputs.version }}/pkl-alpine-linux-amd64
+        chmod +x pkl
+        ./pkl --version
+
+    - name: Execute command
+      shell: bash
+      run: |
+        ./pkl ${{ inputs.args }}
