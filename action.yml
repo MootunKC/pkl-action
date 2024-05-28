@@ -4,6 +4,10 @@ author: Draftea
 
 description: Setup pkl-lang CLI to interact with it
 
+branding:
+  icon: box
+  color: blue
+
 inputs:
   version:
     description: Desired pkl version.
